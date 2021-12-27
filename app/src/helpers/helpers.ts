@@ -166,6 +166,14 @@ export function openExternal(
   return shell.openExternal(url, options);
 }
 
+export function isWayland(): boolean {
+  return (
+    isLinux() &&
+    (Boolean(process.env.WAYLAND_DISPLAY) ||
+      process.env.XDG_SESSION_TYPE === 'wayland')
+  );
+}
+
 export function removeUserAgentSpecifics(
   userAgentFallback: string,
   appName: string,
